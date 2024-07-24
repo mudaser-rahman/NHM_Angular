@@ -1,0 +1,67 @@
+
+
+
+                        <div class="col-md-12"></div>
+                        <div>
+                            <div class="center-horizontally">
+                                <div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb"
+                                            style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                                            <h4>Bank Master</h4>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        
+                            <form [formGroup]="formValidate">
+                                <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+                                     <span class="detailType">Details of CFC</span> 
+                                    <div class="container" style="font-size: 12px;">
+
+                        
+                        
+                                        <div class="box">
+                                            <div class="form-group">
+                                                <label>Name Of  bank name</label>
+                                                <div>
+                                                    <mat-form-field appearance="outline" style="height: 40px;">
+                                                        <input matInput type="text" placeholder="Enter bank name" formControlName="distname" [(ngModel)]="adddistrictmaster.DistrictName"  required>
+                                                        <mat-error *ngIf="hasError('distname', 'required')">district name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('distname', 'maxlength')">You have more than 50 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('distname', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        
+
+                                        <div class="form-group text-center">
+                                            <button id="btnsearch"  onclick="return getbyname(bank_name.value)" class="form-control">Search</button>
+
+                                        </div>
+                                            
+                                        </div>
+                        
+                                    </div>
+                            
+                            
+                              </form>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                             <tr>
+                             
+                                <th>Bank code</th>
+                                <th>Bank Name</th>
+                                <th>Bank Name LL</th>                                 
+                            </tr>                        
+                        </thead>
+                        <tbody class="tbody">
+                            
+                        </tbody>
+                    </table>
+
+       
+                  

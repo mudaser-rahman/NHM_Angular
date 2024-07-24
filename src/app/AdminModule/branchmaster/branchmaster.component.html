@@ -1,0 +1,160 @@
+<p>branchmaster works!</p>
+<div class="container">
+
+
+                        <div class="col-md-12"></div>
+                        <div>
+                            <div class="center-horizontally">
+                                <div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb"
+                                            style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                                            <h4>District Master</h4>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        
+                            <form [formGroup]="formValidate">
+                                <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+                                    <!-- <span class="detailType">Details of CFC</span> -->
+                                    <div class="container" style="font-size: 12px;">
+                        
+                <div class="box">
+
+                    <div class="form-group">
+                        <div>
+
+                            <mat-form-field>
+                                <mat-label>Select District</mat-label>
+                                <mat-select formControlName="district">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                                        item.district_name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">District is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                            
+                <div class="box">
+
+                    <div class="form-group">
+                        <div>
+
+                            <mat-form-field>
+                                <mat-label>Select bank</mat-label>
+                                <mat-select formControlName="district">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                                        item.district_name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">District is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                                        <div class="box">
+                                            <div class="form-group">
+                                                <label>Name Of branch name </label>
+                                                <div>
+                                                    <mat-form-field appearance="outline" style="height: 40px;">
+                                                        <input matInput type="text" placeholder="Enter district name" formControlName="distname" [(ngModel)]="adddistrictmaster.DistrictName"  required>
+                                                        <mat-error *ngIf="hasError('distname', 'required')">district name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('distname', 'maxlength')">You have more than 50 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('distname', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <div class="box">
+                                            <div class="form-group">
+                                                <label>Enter Ifsc code</label>
+                                                <div>
+                                                    <mat-form-field appearance="outline">
+                                                        <input matInput type="text" placeholder="Enter district_name_ll" formControlName="distnameLI" [(ngModel)]="adddistrictmaster.DistrictName"  >
+                                                        <mat-error *ngIf="hasError('distnameLI', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('distnameLI', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('distnameLI', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                    </div>
+                                    <div class="btnDiv">
+                                        <button class="btn" (click)="postdistrictmaster()">Save</button>
+                                        <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                                    </div>
+                                </div>
+                              </form>
+                        </div>
+                        
+                        <table id="GridView1" runat="server" class="table table-hover table-bordered table-striped">
+                            <thead class="success">
+                                <tr>
+                                    <th>branch  code</th>
+                                    <th>Branch Name</th>
+                                    <th>Ifsc code</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+    
+                                <tr *ngFor="let item of data">
+    
+                                    <td>{{item.districtCode}}</td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.districtName}}</span>
+                                        <input type="text" [(ngModel)]="item.districtName" *ngIf="item.editable">
+                                    </td>
+                                    <td>
+                                        <span *ngIf="!item.editable">{{item.districtName}}</span>
+                                        <input type="text" [(ngModel)]="item.districtName" *ngIf="item.editable">
+                                    </td>
+    
+                                 
+
+
+                                    <td>
+                                        <button type="button" class="btn btn-primary" style="width: 100px;"
+                                            (click)="edit(item)" *ngIf="!item.isEditing">Edit</button>
+<!-- 
+                                        <button type="button" class="btn btn-primary" style="width: 100px;"
+                                            (click)="delete(item)" *ngIf="!item.isDelete">Delete</button> -->
+
+                                            <button type="button" class="btn btn-danger" (click)="Deletedistrictmaster(item)"
+                                            style="width: 100px;" *ngIf="!item.isDelete" >Delete</button>
+
+                                            <button type="button" class="btn btn-success" (click)="Updatedistrictmasterdata(item)"
+                                           style="width:100px;" *ngIf="item.isEditing"> Update</button>
+                                   
+
+                                        <button type="button" class="btn btn-primary" style="width: 100px;"
+                                            (click)="cancelEdit(item)" *ngIf="item.isEditing">cancel</button>
+
+                                    </td>
+                                </tr>
+    
+                            </tbody>
+                        </table>
+
+
+                  
+
+
+
+</div>

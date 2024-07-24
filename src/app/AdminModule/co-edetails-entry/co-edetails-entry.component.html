@@ -1,0 +1,258 @@
+
+
+
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                    <h3>Details Progress Of CoE</h3>               
+                 </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="GetYearmaster()">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.state_Code">{{
+                                        item.state_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">state is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select year</mat-label>
+                                <mat-select formControlName="year"  [(ngModel)]="yearcd" (selectionChange)="getmonthmaster()">
+                                    <mat-option *ngFor="let item of Selectyeardata" [value]="item.financial_Year">{{
+                                        item.financial_Year
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('year', 'required')">year is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Months</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select Months</mat-label>
+                                <mat-select formControlName="months"  [(ngModel)]="monthcd"   (selectionChange)="getcoedetailsentry()">
+                                    <mat-option *ngFor="let item of selectmonthmaster" [value]="item.sno">{{
+                                        item.month_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('months', 'required')">months is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+
+          
+
+                <div class="btnDiv">
+                    <button class="btn" (click)="PostComponentselectionmaster()">Save Component</button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+                <div class="btnDiv">
+                    <button class="btn" (click)="ClearAllDATA()">Reset</button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+
+                <table mat-table matSort [dataSource]="dataSource"  style="overflow: scroll;">
+
+                    <ng-container matColumnDef="slNo">
+                    <th mat-header-cell *matHeaderCellDef> Sl No. </th>
+                    <td mat-cell *matCellDef="let row let i = index;"> {{i+1}} </td>
+                    </ng-container>
+                    
+
+                    <ng-container matColumnDef="coE_Id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Years </th>
+                        <td mat-cell *matCellDef="let row"> {{row.coE_Id}} </td>
+                        </ng-container>
+
+
+                    <ng-container matColumnDef="Years">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Years </th>
+                    <td mat-cell *matCellDef="let row"> {{row.years}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="Months">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Months </th>
+                    <td mat-cell *matCellDef="let row">
+                        <!-- {{row.districtName}}  -->
+                        <span *ngIf="!row.editable">{{row.months}}</span>
+                        <input type="text" [(ngModel)]="row.months" *ngIf="row.editable">
+                    </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="Coename">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> CoE name </th>
+                        <td mat-cell *matCellDef="let row">
+                            <!-- {{row.districtName}}  -->
+                            <span *ngIf="!row.editable">{{row.coEName}}</span>
+                            <input type="text" [(ngModel)]="row.coEName" *ngIf="row.editable">
+                        </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Nodemonstaration">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nodemonstaration </th>
+                            <td mat-cell *matCellDef="let row">
+                                <!-- {{row.districtName}}  -->
+                                <span *ngIf="!row.editable">{{row.nodemonstration}}</span>
+                                <input type="text" [(ngModel)]="row.nodemonstration" *ngIf="row.editable">
+                            </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="Technologies">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Technologies </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <!-- {{row.districtName}}  -->
+                                    <span *ngIf="!row.editable">{{row.technologies}}</span>
+                                    <input type="text" [(ngModel)]="row.technologies" *ngIf="row.editable">
+                                </td>
+                                </ng-container>
+                                <ng-container matColumnDef="Sourceoftechnologies">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sourceoftechnologies </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <!-- {{row.districtName}}  -->
+                                        <span *ngIf="!row.editable">{{row.sourceTechnologies}}</span>
+                                        <input type="text" [(ngModel)]="row.sourceTechnologies" *ngIf="row.editable">
+                                    </td>
+                                    </ng-container>
+
+
+                                    <ng-container matColumnDef="statusofcoe">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>statusofcoe </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <!-- {{row.districtName}}  -->
+                                            <span *ngIf="!row.editable">{{row.statusofCoE}}</span>
+                                            <input type="text" [(ngModel)]="row.statusofCoE" *ngIf="row.editable">
+                                        </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="calendartimings">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>calendartimings </th>
+                                            <td mat-cell *matCellDef="let row">
+                                                <!-- {{row.districtName}}  -->
+                                                <span *ngIf="!row.editable">{{row.calendarTrainings}}</span>
+                                                <input type="text" [(ngModel)]="row.calendarTrainings" *ngIf="row.editable">
+                                            </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Nofarmers">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nofarmers </th>
+                                                <td mat-cell *matCellDef="let row">
+                                                    <!-- {{row.districtName}}  -->
+                                                    <span *ngIf="!row.editable">{{row.noFarmers}}</span>
+                                                    <input type="text" [(ngModel)]="row.noFarmers" *ngIf="row.editable">
+                                                </td>
+                                                </ng-container>
+
+                                                <ng-container matColumnDef="plants">
+                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>plants </th>
+                                                    <td mat-cell *matCellDef="let row">
+                                                        <!-- {{row.districtName}}  -->
+                                                        <span *ngIf="!row.editable">{{row.plants}}</span>
+                                                        <input type="text" [(ngModel)]="row.plants" *ngIf="row.editable">
+                                                    </td>
+                                                    </ng-container>
+
+                                                    <ng-container matColumnDef="seedlings">
+                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>seedlings </th>
+                                                        <td mat-cell *matCellDef="let row">
+                                                            <!-- {{row.districtName}}  -->
+                                                            <span *ngIf="!row.editable">{{row.seedlings}}</span>
+                                                            <input type="text" [(ngModel)]="row.seedlings" *ngIf="row.editable">
+                                                        </td>
+                                                        </ng-container>
+
+                                                        <ng-container matColumnDef="quantity">
+                                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>quantity </th>
+                                                            <td mat-cell *matCellDef="let row">
+                                                                <!-- {{row.districtName}}  -->
+                                                                <span *ngIf="!row.editable">{{row.quantity}}</span>
+                                                                <input type="text" [(ngModel)]="row.quantity" *ngIf="row.editable">
+                                                            </td>
+                                                            </ng-container>
+
+                                                            <ng-container matColumnDef="expenditure">
+                                                                <th mat-header-cell *matHeaderCellDef mat-sort-header>expenditure </th>
+                                                                <td mat-cell *matCellDef="let row">
+                                                                    <!-- {{row.districtName}}  -->
+                                                                    <span *ngIf="!row.editable">{{row.expenditure}}</span>
+                                                                    <input type="text" [(ngModel)]="row.expenditure" *ngIf="row.editable">
+                                                                </td>
+                                                                </ng-container>
+
+                                                                <ng-container matColumnDef="Remarks">
+                                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Remarks </th>
+                                                                    <td mat-cell *matCellDef="let row">
+                                                                        <!-- {{row.districtName}}  -->
+                                                                        <span *ngIf="!row.editable">{{row.remarks}}</span>
+                                                                        <input type="text" [(ngModel)]="row.remarks" *ngIf="row.editable">
+                                                                    </td>
+                                                                    </ng-container>
+
+                                                 
+                            
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <td mat-cell *matCellDef="let row">
+                    
+                        <button type="button" *ngIf="!row.isEditing" class="btn btn-colour" 
+                        (click)="Editdistrictmaster(row)">Edit</button>
+
+                    <button type="button" class="btn btn-colour"
+                        (click)="UpdateCoedeatilsentry(row)" *ngIf="row.isEditing">Update</button>
+
+                    <button type="button" class="btn" mat-stroked-button style="margin-left: 4px;"
+                        (click)="cancelEdit(row)" *ngIf="row.isEditing">Cancel</button>
+
+                     <button type="button" class="btn" mat-raised-button color="warn" style="margin-left: 4px;"
+                        (click)="DeleteCoeDetailsmaster(row)" *ngIf="!row.isEditing">Delete</button>
+                    
+                    </td>
+                    </ng-container>
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    
+                    <!-- Row shown when there is no matching data. -->
+                    <!-- <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr> -->
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                    
+                    

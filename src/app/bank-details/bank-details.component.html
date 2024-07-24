@@ -1,0 +1,379 @@
+<div>
+    <span><button (click)="addressDetails()">Address</button></span>
+    <span><button (click)="bankDetails()">Bank details</button></span>
+    <span><button (click)="showForm()">Full</button></span>
+    <span><button (click)="showForm()">Full</button></span>
+</div>
+
+
+<section *ngIf="showAddress">
+    <span class="detailType">Details of Applicant</span>
+    <div class="container">
+
+        <div class="box">
+            <div class="form-group">
+                <label>State</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>District</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Block</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Panchayat</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Taluk</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Village</label>
+                <div>
+                    <select name="Select District">
+                        <option value="Warangal">Option 1</option>
+                        <option value="Adilabad">Option 2</option>
+                        <option value="Nizamabad">Option 3</option>
+                        <option value="Karimnagar">Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>House No.</label>
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Post Office</label>
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Pincode</label>
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="form-group">
+                <label>Email ID</label>
+                <div>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="btnDiv">
+        <button style="background-color: #44ec38c0;" class="btn" mat-raised-button>Save</button>
+    </div>
+
+</section>
+
+<section *ngIf="showBank">
+    <span class="detailType">Bank Details</span>
+    <div class="container">
+        <div class="box">
+            <label>Name of the Bank</label>
+            <div>
+                <select name="Select District">
+                    <option value="Warangal">Option 1</option>
+                    <option value="Adilabad">Option 2</option>
+                    <option value="Nizamabad">Option 3</option>
+                    <option value="Karimnagar">Option 4</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="box">
+            <label>Branch</label>
+            <div>
+                <select name="Select District">
+                    <option value="Warangal">Option 1</option>
+                    <option value="Adilabad">Option 2</option>
+                    <option value="Nizamabad">Option 3</option>
+                    <option value="Karimnagar">Option 4</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="box">
+            <label>IFSC code</label>
+            <div>
+                <input type="text" name="" id="">
+            </div>
+        </div>
+    
+        <div class="box">
+            <label>Account Number</label>
+            <div>
+                <input type="text" name="" id="">
+            </div>
+        </div>
+    </div>
+    <div class="btnDiv">
+        <button style="background-color: #44ec38c0;" class="btn" mat-raised-button>Save</button>
+    </div>
+</section>
+
+<section *ngIf="showBank">
+    <span class="detailType">Variety of coconut seedlings planted</span>
+    <div class="container">
+        <table class="table" border="1">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Variety of seedling planted</th>
+                    <th scope="col">Nos.</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Cost of seedling </th>
+                    <th scope="col">Date of 
+                        planting </th>
+                    <th scope="col">Spacing between plants</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Tall</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"> </td>
+                    <td><input type="text"> </td>
+                    <td><input type="date" name="" id=""></td>
+                    <td><input type="text" name="" id=""></td>
+                </tr>
+                <tr>
+                    <th>Dwarf</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"> </td>
+                    <td><input type="text"> </td>
+                    <td><input type="date" name="" id=""></td>
+                    <td><input type="text" name="" id=""></td>
+                </tr>
+                <tr>
+                    <th>Hybrid</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"> </td>
+                    <td><input type="text"> </td>
+                    <td><input type="date" name="" id=""></td>
+                    <td><input type="text" name="" id=""></td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td><input type="text"></td>
+                    <td><input type="text"> </td>
+                    <td><input type="text"> </td>
+                    <td><input type="date" name="" id=""></td>
+                    <td><input type="text" name="" id=""></td>
+                </tr>
+                <td colspan="6" class="table-cell">
+                    <div class="cell-content">
+                        Whether new seedlings are planted among existing coconut trees?
+                        <span class="radio-group">
+                            <input id="toggle-on" name="toggle" type="radio">
+                            <label for="toggle-on">Yes</label>
+                            <input id="toggle-off" name="toggle" type="radio">
+                            <label for="toggle-off">No</label>
+                        </span>
+                    </div>
+                </td>
+                
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section *ngIf="showBank">
+    <span class="detailType">Details of land planted for availing subsidy</span>
+    <div class="container">
+        <table class="table" border="1">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Survey No</th>
+                    <th scope="col">Area (in ha)</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Taluk</th>
+                    <th scope="col">Panchayat</th>
+                    <th scope="col">Village</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><input type="text"></th>
+                    <td><input type="text"></td>
+                    <td>
+                        <select name="Select District">
+                            <option value="Warangal">Warangal</option>
+                            <option value="Adilabad">Adilabad</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="Select District">
+                            <option value="Warangal">Warangal</option>
+                            <option value="Adilabad">Adilabad</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="Select District">
+                            <option value="Warangal">Warangal</option>
+                            <option value="Adilabad">Adilabad</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="Select District">
+                            <option value="Warangal">Warangal</option>
+                            <option value="Adilabad">Adilabad</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- <tr> -->
+                    <td colspan="6" class="table-cell">
+                        <div class="cell-content">
+                        Whether the applicant is owner of the above mentioned land
+                        <span class="radio-group">
+                            <input id="toggle-on" name="toggle" type="radio">
+                            <label for="toggle-on">Yes</label>
+                            <input id="toggle-off" name="toggle" type="radio">
+                            <label for="toggle-off">No</label>
+                        </span>
+                        </div>
+                    </td>
+                <!-- </tr> -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section *ngIf="showBank">
+    <span class="detailType">Expenditure incurred during 1st year</span>
+    <div class="container">
+        <table class="table" border="1">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">Amount (Rs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cost of the seedlings</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Preparation of the land and planting seedlings</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Cost of manures and fertilizer</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Fencing and shading</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Irrigation cost & Intercropping</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Plant protection</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Agricultural equipments</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Other Expenses</td>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td><input type="text"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

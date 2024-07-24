@@ -1,0 +1,115 @@
+.headAlign{
+    text-align: center;
+    border-radius: 6px;
+    /* padding: 30px; */
+    margin: 10px 115px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 1px 4px 3px rgba(12, 226, 41, 0.61);
+    border: 1px solid #0b8b09;
+    max-width: 1100px;
+  }
+  
+  .top-gap{
+    border-radius: 6px;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 1px 4px 3px rgba(12, 226, 41, 0.61);
+    border: 1px solid #0b8b09;
+    max-width: 1164px;
+  }
+  
+  .section{
+    margin-top: 10%;
+    border-radius: 6px;
+    position: relative;
+    padding: 0 12px 10px 12px;
+    background-color: #fff;
+    box-shadow: 1px 4px 3px rgba(12, 226, 41, 0.61);
+    border: 1px solid #0b8b09;
+    max-width: 1151px;
+  }
+  
+  .headFlex{
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .headFlexx{
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+  }
+  
+  
+  
+  .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+  /* h3{
+      margin: 0px;
+  } */
+  
+  /* tr {
+      display: table-row;
+      vertical-align: inherit;
+      border-color: inherit;
+      border: 1px;
+    } */
+  
+    .top-gap{
+      margin-top: 25px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    ol.b {
+      list-style-type: none;
+    }
+  
+    li{
+      margin: 5px;
+    }
+  
+  
+  
+    .sectionHeader{
+      text-align: center;
+    }
+  
+    .sectionPara{
+      text-align: justify;
+      margin-top: 25px;
+    }
+  
+    .topMargin{
+      margin-top: 30px;
+    }
+  
+    .uploadFloat{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  
+    /* .container {
+      position: relative;
+      max-width: 1200px;
+      width: 72%;
+      border-radius: 6px;
+      padding: 30px;
+      margin: 10px 115px;
+      background-color: #fff;
+      box-shadow: 1px 4px 3px rgba(12, 226, 41, 0.61);
+      border: 1px solid #0b8b09;
+  
+     
+  } */
+  

@@ -1,0 +1,32 @@
+export class LandDetails {
+    coconutVarietyCode!: string;
+    coconutVarietyName!: string;
+    cdbBenId!: string;
+    surveyNo!: string;
+    totalLandAreaOwned!: number;
+    totalLandAreaCoconut!: number;
+    totalLandAreaLoDp!: number;
+    soilTypeCode!: string;
+    waterSource!: string;
+    stateCode!: string;
+    districtCode!: string;
+    blockCode!: string;
+    tahsilCode!: string;
+    panchayatCode!: string;
+    villageCode!: string;
+    ownershipArea!: number;
+    landOwnerTypeCode!: string;
+    yearCode!: string;
+    landAreaCoconut!: number;
+    landAreaCoconutSelect!: number;
+    avgAgePalmns!: number;
+    avgAgePalmnsSelect!:string;
+    yielding!: number;
+    nonYielding!: number;
+    totalNoPalms!: number;
+    palmsSelected!: number;
+    totalAvgYieldPalmsPy!: number;
+    totalAvgYieldPalmsPySelected!: number;
+    incomePy!: number;
+    expPy!: number;
+}

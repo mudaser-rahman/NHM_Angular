@@ -1,0 +1,205 @@
+
+
+
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                    <h3>( Details Project Progress under MIDH )</h3>               
+                 </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="GetYearmaster()">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                        item.state_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">state is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+               
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select year</mat-label>
+                                <mat-select formControlName="year"  [(ngModel)]="yearcd" (selectionChange)="GetProjectDetails()">
+                                    <mat-option *ngFor="let item of Selectyeardata" [value]="item.financial_Year">{{
+                                        item.financial_Year
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('year', 'required')">year is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+              
+
+          
+                    
+                  
+
+            </div>
+
+            <div class="col-lg-12"  style="overflow: scroll;">
+
+                <table class="  table-bordered table table-striped" style="overflow: scroll;">
+                    <thead>
+                    <tr>
+                    <th scope="col">Sno </th>
+                    <th scope="col">Project Code </th>
+                    <th scope="col">District Name </th>
+                    <th scope="col">Date Of Sanction  </th>
+                    <th scope="col">Category </th>
+                    <th scope="col">
+                      Sub Category </th>
+                    <th scope="col">Beneficeary</th>
+                    <th scope="col">Project Cost </th>
+                    <th scope="col">Subsidy</th>
+                    <th scope="col">Capacity </th>
+                    <th scope="col">Unit </th>
+                    <th scope="col">Status </th>
+                    <th scope="col"> Remarks </th>
+              
+            
+
+                    <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tbody">
+                   
+                                    <tr *ngFor="let item of data">
+    
+                                        <td>{{item.sNo}}</td>
+                                        <td>
+                                            <span *ngIf="!item.editable">{{item.pCode}}</span>
+                                            <!-- <input type="text" [(ngModel)]="item.pCode" *ngIf="item.editable"> -->
+                                        </td>
+                                        <td>
+                                            <span *ngIf="!item.editable">{{item.district_name}}</span>
+                                            <!-- <input type="text" [(ngModel)]="item.district_name" *ngIf="item.editable"> -->
+                                        </td>
+                                                                          
+
+                                            <td>
+                                                <span *ngIf="!item.editable">{{item.date_Sanction}}</span>
+                                                <!-- <input type="text" [(ngModel)]="item.date_Sanction" *ngIf="item.editable"> -->
+                                         </td>
+                                            
+                                            
+
+
+                                                    <td>
+                                                        <span *ngIf="!item.editable">{{item.category}}</span>
+                                                        <!-- <input type="text" [(ngModel)]="item.category" *ngIf="item.editable"> -->
+                                                    </td>
+                                                    
+                                                    
+
+
+                                                        <td>
+                                                            <span *ngIf="!item.editable">{{item.subCategory}}</span>
+                                                            <!-- <input type="text" [(ngModel)]="item.subCategory" *ngIf="item.editable"> -->
+                                                        </td>
+                                                        
+                                                        
+
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.beneficiary}}</span>
+                                                                <!-- <input type="text" [(ngModel)]="item.beneficiary" *ngIf="item.editable"> -->
+                                                                </td>
+                                                            
+                                                            
+
+
+                                                            
+                                                                    
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.project_Cost}}</span>
+                                                                <input type="text" [(ngModel)]="item.project_Cost" *ngIf="item.editable">
+                                                                </td>
+                                                            
+                                                            
+                                                                
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.subsidy}}</span>
+                                                                <input type="text" [(ngModel)]="item.subsidy" *ngIf="item.editable">
+                                                                </td>
+                                                            
+                                                          
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.capacity}}</span>
+                                                                <input type="text" [(ngModel)]="item.capacity" *ngIf="item.editable">
+                                                                </td>
+                                                            
+                                                            
+                                                                
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.unit}}</span>
+                                                                <input type="text" [(ngModel)]="item.unit" *ngIf="item.editable">
+                                                                </td>
+                                                            
+                                                            
+                                                                
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.status}}</span>
+                                                                <input type="text" [(ngModel)]="item.status" *ngIf="item.editable">
+                                                                </td>
+                                                            
+                                                            
+                                                                
+                                                            <td>
+                                                                <span *ngIf="!item.editable">{{item.remarks}}</span>
+                                                                <input type="text" [(ngModel)]="item.remarks" *ngIf="item.editable">
+                                                         </td>
+                                                            
+                                                            <td>
+                                                                                                                                                                                                                                         
+
+                                            <button type="button" class="btn btn-primary"
+                                                style="width: 100px;" (click)="Editmandalmaster(item)">Edit</button>
+                                        </td>
+
+                                        <td>
+                                            <button type="button" class="btn" mat-stroked-button style="margin-left: 4px;"
+                                            (click)="cancelEdit(item)" *ngIf="item.isEditing">Cancel</button>
+                                        </td>
+          
+                             
+                                        <td>
+                                            <button type="button" class="btn btn-success"
+                                            style="width: 100px;" (click)="UpdateProjectDetails(item)"  >Update</button>
+                                        </td>
+                                   
+                                    </tr>
+                    </tbody>
+                    </table>
+
+                    </div>
+        </div>
+    </form>

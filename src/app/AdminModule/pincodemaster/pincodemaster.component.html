@@ -1,0 +1,170 @@
+
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                    <h4>Village   Master</h4>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <div>
+
+                            <mat-form-field>
+                                <mat-label>Select District</mat-label>
+                                <mat-select formControlName="district">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                                        item.district_name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">District is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </div>
+<div class="col-md-4">
+    <div class="form-group">
+        <div>
+
+            <mat-form-field>
+                <mat-label>Select mandal</mat-label>
+                <mat-select formControlName="mandal">
+                    <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                        item.district_name
+                        }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('district', 'required')">District is
+                    <strong>required</strong></mat-error>
+            </mat-form-field>
+        </div>
+
+    </div>
+</div>
+             
+
+<div class="col-md-4">
+    <div class="form-group">
+        <div>
+
+            <mat-form-field>
+                <mat-label>Select village </mat-label>
+                <mat-select formControlName="mandal">
+                    <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                        item.district_name
+                        }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('district', 'required')">District is
+                    <strong>required</strong></mat-error>
+            </mat-form-field>
+        </div>
+
+    </div>
+</div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                           
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Enter Pincode </mat-label>
+                                    <input matInput type="text" placeholder="Enter Pincode  "
+                                        [(ngModel)]="addvillagemaster.villageName" formControlName="mandalname" required>
+                                    <mat-error *ngIf="hasError('mandalname', 'required')">mandal name is
+                                        <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('mandalname', 'maxlength')">You have more than 75
+                                        characters</mat-error>
+                                    <mat-error *ngIf="hasError('mandalname', 'pattern')">Only alphabetic characters are
+                                        alloweded</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                           
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Local Language</mat-label>
+                                    <input matInput type="text" placeholder="Enter Local Language"
+                                        [(ngModel)]="addvillagemaster.villageName" formControlName="mandalnameLI"
+                                        required>
+                                    <mat-error *ngIf="hasError('mandalnameLI', 'required')">Local language is
+                                        <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('mandalnameLI', 'maxlength')">You have more than 100
+                                        characters</mat-error>
+                                    <mat-error *ngIf="hasError('mandalnameLI', 'pattern')">Only alphabetic characters
+                                        are alloweded</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group text-center">
+                    <button id="Button2" class="btn btn-success" style="width: 180px; display: block;"
+                        (click)="postmandalmaster()">Save</button>
+                </div>
+
+            </div>
+       
+    </form>
+</div>
+
+<div class="col-lg-12">
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Block Code</th>
+                <th scope="col">Block Name</th>
+                <th scope="col">Block Name(LL)</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+
+            <tr *ngFor="let item of data">
+
+                <td>{{item.mandal_code}}</td>
+                <td>
+                    <span *ngIf="!item.editable">{{item.mandal_name}}</span>
+                    <input type="text" [(ngModel)]="item.mandal_name" *ngIf="item.editable">
+                </td>
+                <td>
+                    <span *ngIf="!item.editable">{{item.mandal_name_ll}}</span>
+                    <input type="text" [(ngModel)]="item.mandal_name_ll" *ngIf="item.editable">
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-primary" style="width: 100px;"
+                        (click)="Editmandalmaster(item)">Edit</button>
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-success" style="width: 100px;"
+                        (click)="Updatemandalmaster(item)">Update</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="DeleteMandalmaster(item)"
+                        style="width: 100px;">Delete</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

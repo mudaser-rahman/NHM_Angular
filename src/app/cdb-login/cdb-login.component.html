@@ -1,0 +1,170 @@
+<div class="fcontainer">
+  <div class="item1">
+    <div>
+      <img src="assets/Images/NHM_header.PNG" class="img-fluid" alt="">
+
+    </div>
+  </div>
+
+
+  <div class="item2 bgbody">
+    <div class="container-fluid fill">
+      <div class="row fill" style="justify-content: center; align-content: center;">
+        <div class="instruct col-xl-7 col-lg-7 col-md-6 col-sm-6 col-10">
+          <h2 style="text-align:left">Instructions for Department Users </h2>
+          <div style="border:1px double black; margin-top: 5px; margin-bottom: 5px;"></div>
+          <p style="text-align:justify">
+            1. Enter your Email Address while registering against Username.
+          </p>
+          <p style="text-align:justify">
+            2. Enter your Password created while registering against your Username
+          </p>
+          <p style="text-align:justify">
+            3. If this is the first time, you are visiting this website, kindly click on "SHM New
+            User?
+            Register
+            Here" to register.
+          </p>
+          <p>
+            <a style="color: red; font-size: 16px bold;" href="assets/Content/Password_Policy_1.pdf" target="_blank">
+              Note: Passowrd Policy Documnet to created password</a>
+          </p>
+        </div>
+        <div class="login tbx col-xl-3 col-lg-3 col-md-5 col-sm-5 col-10">
+          <form [formGroup]="aFormGroup" *ngIf="showLogin">
+            <h2 style="align-self:center; padding-top: 15px; text-align: center;">
+              <!-- <img src="assets/Headerimages/loginlogo.png" alt="login-logo"
+              style="height: 40px; width:45px; margin-top: -7px; padding-right: 5px;"> -->
+              LOGIN
+            </h2>
+            <div style=" margin-top: 5px; margin-bottom: 5px; text-align: center;">
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="userId" [(ngModel)]="credentials.userId" placeholder="User Id" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input matInput type="password" formControlName="password" [(ngModel)]="credentials.password" placeholder="Password" required>
+              </mat-form-field>
+              <span style="text-decoration:double;">
+                <h4>{{ captcha }}</h4>
+            </span> 
+            <mat-form-field appearance="outline">
+              <input matInput type="text" formControlName="captcha" [(ngModel)]="TxtCaptchaa" placeholder="Captcha" required>
+            </mat-form-field>
+            </div>
+
+            <!-- <input id="txtuid" class="txtbox" type="text" formControlName ="username"  (ngModelChange)="valuechange($event)" [(ngModel)]="credentials.username" placeholder="Enter Username"
+            name="uname" required> -->
+            <!-- <input id="txtpwd" class="txtbox" type="password" formControlName ="password" [(ngModel)]="credentials.password" id="pwd"
+            placeholder="Enter Password" name="pwd"> -->
+            <div>
+              <!-- <div>  <img [src]="captchaImage" alt="CAPTCHA"></div> -->
+              <div class="form-group">
+                <!-- <input name="TxtCaptcha" type="text" placeholder="Enter Captcha" formControlName ="EnterCaptcha" [(ngModel)]="EnterCaptcha"
+                    style="font-size: Medium;"> -->
+              </div>
+
+            </div>
+          </form>
+
+
+          <div *ngIf="showSignUp">
+            <h2 style="align-self:center; padding-top: 15px; text-align: center;">
+              SIGNUP
+            </h2>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label>User Level</label>
+                  <div>
+                     
+
+                    <mat-form-field>
+                
+                      <select matNativeControl required>
+                        <option value="Select">Select</option>
+                        <option value="Guest">Guest</option>
+                        <option value="State">State</option>
+                        <option value="District">District</option>
+                        <option value="Agency">Agency</option>
+
+                      </select>
+                    </mat-form-field>
+
+                  </div>
+              </div>
+          </div>
+
+
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label>State</label>
+                  <div>
+                      <mat-form-field>
+                          <mat-label>Select state</mat-label>
+                          <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="Getdistictmaster(statecd)">
+                              <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                  item.state_Name
+                                  }}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="hasError('state', 'required')">state is
+                              <strong>required</strong></mat-error>
+                      </mat-form-field>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label>District</label>
+                  <div>
+                      <mat-form-field>
+                          <mat-label>Select District</mat-label>
+                          <mat-select formControlName="district" >
+                              <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                                  item.district_name
+                                  }}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="hasError('district', 'required')">district is
+                              <strong>required</strong></mat-error>
+                      </mat-form-field>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+            <div style=" margin-top: 5px; margin-bottom: 5px; text-align: center;">
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="userId" [(ngModel)]="credentials.userId" placeholder="User Id" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="password" [(ngModel)]="credentials.password" placeholder="Password" >
+              </mat-form-field>
+              <span style="text-decoration:double;">
+                <h4>{{ captcha }}</h4>
+            </span> 
+            </div>
+          </div>
+            <button id="btnLogin" class="btn1 btn2" type="submit" (click)="login('HH')"  >Login</button>
+            <button class="btn1 btn2" type="submit" (click)="ResisterUser()">SHM New User? Register Here...</button>
+         
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <footer>
+
+    <div style="text-align: center;">
+      <img src="assets/Images\Hortnet_footer_with_agri copy1.jpg" class="img-fluidd" alt="">
+    </div>
+
+  </footer> -->
+</div>

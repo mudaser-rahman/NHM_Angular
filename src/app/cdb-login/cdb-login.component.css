@@ -1,0 +1,248 @@
+
+@media only screen and   (max-width:600px)
+{
+
+.login {
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 25px;
+    border-radius: 15px;
+    
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 77%;
+    padding: 13px;
+    margin-left: 50px;
+  }
+
+
+}
+html,
+body {
+  height: 100%;
+}
+
+
+
+.bgbody {
+  background: url(/assets/LoginImages/loginpage.jpg) no-repeat center center scroll;
+  background-size: cover;
+  overflow: auto;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.tbx {
+  background: url(/assets/LoginImages/logindivblur8.png) no-repeat center center;
+  background-size: cover;
+  /* filter: blur(8px); */
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.rows {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.btn1 {
+  /* align-self: center; */
+  margin-bottom: 10px;
+  border: none;
+  height: 45px;
+  /* width: 280px; */
+  font-family: "montserrat", sans-serif;
+  /* text-transform: uppercase; */
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  background-size: 200%;
+  transition: 0.6s;
+  font-weight: bold;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+}
+
+.btn2 {
+  /* background-image: linear-gradient(90deg, #c1ceb6, #678975, #c1ceb6); */
+  background-image: linear-gradient(90deg, #e9ecef, #acc3b4, #e9ecef);
+}
+
+.btn1:hover {
+  background-position: right;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.txtbox {
+  margin: 10px;
+  color: black;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #adadad;
+  background: transparent;
+  border-image: linear-gradient(45deg, #4a584b, #618a63) 2;
+  height: 40px;
+}
+
+.txtbox:focus-visible {
+  border: none;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  outline: none;
+  /* border-bottom: 2px solid #adadad; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  background: transparent;
+  height: 48px;
+}
+
+.login {
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+.instruct {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 40px;
+  margin-left: 120px;
+  margin-top: 120px;
+  background-color: rgb(176 207 176);
+  box-shadow: 1px 5px 5px 5px lightblue;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.dept:focus-visible {
+  box-shadow: none !important;
+  /* border-bottom: 2px solid #adadad !important; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px !important;
+}
+
+::placeholder {
+  color: #5c5c5c;
+}
+
+.respheader {
+  width: 1500px;
+  max-width: 100%;
+  height: 155px;
+}
+
+
+.fcontainer {
+  /* border: 2px solid grey; */
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item1 {
+  height: max-content;
+  width: max-content;
+  align-self: flex-start;
+}
+
+.item2 {
+  height: max-content;
+  width: 100%;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+
+}
+.mat-mdc-text-field-wrapper {
+  width: 101%;
+  height: 45px;
+}
+.nav1 {
+
+  width: -webkit-fill-available;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #335035;
+  color: white;
+font-size: 18px;
+
+}
+
+.nav-link,
+.navbar-brand {
+  color: rgb(27, 15, 15);
+}
+
+.footer1 {
+  background-color: #607769;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer2 {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #48584d;
+}
+
+.foo {
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.sticky+.content {
+  padding-top: 60px;
+}
+.nav>li>a {
+position: relative;
+display: block;
+padding: 10px 15px;
+color: rgba(137, 236, 117, 0.719);
+}
+
+
+.matToolBar {
+  background-color: #30a10e;
+}
+
+.matToolBarButton {
+  background-color: #fe131300;
+  border: none;
+}
+
+
+
+.img-fluidd {
+  max-width: auto;
+  height: 47px;
+  width: 220%;
+}

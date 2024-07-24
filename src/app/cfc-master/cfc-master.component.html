@@ -1,0 +1,51 @@
+
+
+<div>
+    <div class="center-horizontally">
+        <div>
+            <h2>
+                CFC Master
+            </h2>
+        </div>
+    </div>
+
+    <form [formGroup]="cfcMasterValidateForm">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Name Of CFC</label>
+                        <div>
+                            <mat-form-field appearance="outline" style="height: 40px;">
+                                <input matInput type="text" placeholder="Enter CFC Name" formControlName="cfcName" [(ngModel)]="cfcMaster.cfcName" required>
+                                <mat-error *ngIf="hasError('cfcName', 'required')">CFC is <strong>required</strong></mat-error>
+                                <mat-error *ngIf="hasError('cfcName', 'maxlength')">You have more than 50 characters</mat-error>
+                                <mat-error *ngIf="hasError('cfcName', 'pattern')">Only characters are allowed</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Remark</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" placeholder="Enter Remark" formControlName="remark" [(ngModel)]="cfcMaster.remark" >
+                                <mat-error *ngIf="hasError('remark', 'maxlength')">You have more than 100 characters</mat-error>
+                                <mat-error *ngIf="hasError('remark', 'pattern')">Only characters are allowed</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="btnDiv">
+                <button class="btn" (click)="save()">Save</button>
+                <button class="btn" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+      </form>
+</div>

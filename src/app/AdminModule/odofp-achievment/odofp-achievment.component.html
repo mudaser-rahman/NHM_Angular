@@ -1,0 +1,175 @@
+
+
+
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                    <h3>Component Selection for One District One Focus Product (ODOFP)</h3>               
+                 </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="Getdistictmaster(statecd)">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                        item.state_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">state is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>district</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select district</mat-label>
+                                <mat-select formControlName="district"  [(ngModel)]="distcd"   (selectionChange)="GetYearmaster()">
+                                    <mat-option *ngFor="let item of selectdistrictdata" [value]="item.district_code">{{
+                                        item.district_name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">district is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select year</mat-label>
+                                <mat-select formControlName="year"  [(ngModel)]="yearcd">
+                                    <mat-option *ngFor="let item of Selectyeardata" [value]="item.financial_Year">{{
+                                        item.financial_Year
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('year', 'required')">year is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btnDiv">
+                    <button class="btn" (click)="GetODOFPAchievmentdata()">GetComponent</button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+                <div class="btnDiv">
+                    <button class="btn" (click)="PostODOFPAchievmentmastermaster()">Save Component</button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+                <div class="btnDiv">
+                    <button class="btn" (click)="ClearAllDATA()">Reset</button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+
+                <table mat-table matSort [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="slNo">
+                    <th mat-header-cell *matHeaderCellDef> Sl No. </th>
+                    <td mat-cell *matCellDef="let row let i = index;"> {{i+1}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="componentcode">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> componentcode </th>
+                    <td mat-cell *matCellDef="let row"> {{row.component_Code}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="Category">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                    <td mat-cell *matCellDef="let row">
+                        <!-- {{row.districtName}}  -->
+                        <span *ngIf="!row.editable">{{row.category}}</span>
+                        <input type="text" [(ngModel)]="row.category" *ngIf="row.editable">
+                    </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="subcatgory1">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub Category1 </th>
+                        <td mat-cell *matCellDef="let row">
+                            <!-- {{row.districtName}}  -->
+                            <span *ngIf="!row.editable">{{row.subCategory1}}</span>
+                            <input type="text" [(ngModel)]="row.subCategory1" *ngIf="row.editable">
+                        </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="subcatgory2">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Sub Category2 </th>
+                            <td mat-cell *matCellDef="let row">
+                                <!-- {{row.districtName}}  -->
+                                <span *ngIf="!row.editable">{{row.subCategory2}}</span>
+                                <input type="text" [(ngModel)]="row.subCategory2" *ngIf="row.editable">
+                            </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="subcatgory3">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub Category3 </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <!-- {{row.districtName}}  -->
+                                    <span *ngIf="!row.editable">{{row.subCategory3}}</span>
+                                    <input type="text" [(ngModel)]="row.subCategory3" *ngIf="row.editable">
+                                </td>
+                                </ng-container>
+                                <ng-container matColumnDef="componentname">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>componentName </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <!-- {{row.districtName}}  -->
+                                        <span *ngIf="!row.editable">{{row.component_Name}}</span>
+                                        <input type="text" [(ngModel)]="row.component_Name" *ngIf="row.editable">
+                                    </td>
+                                    </ng-container>
+                            
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <td mat-cell *matCellDef="let row">
+                    
+                        <button type="button" *ngIf="!row.isEditing" class="btn btn-colour" 
+                        (click)="Editdistrictmaster(row)">Edit</button>
+                    
+                    <!-- <button type="button" class="btn btn-colour"
+                        (click)="Updatedistrictmasterdata(row)" *ngIf="row.isEditing">Update</button> -->
+                    
+                    <button type="button" class="btn" mat-stroked-button style="margin-left: 4px;"
+                        (click)="cancelEdit(row)" *ngIf="row.isEditing">Cancel</button>
+             
+                    
+                    </td>
+                    </ng-container>
+                    
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    
+                    <!-- Row shown when there is no matching data. -->
+                    <!-- <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr> -->
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                    
+                    

@@ -1,0 +1,315 @@
+
+
+
+                        <div class="col-md-12"></div>
+                        <div>
+                            <div class="center-horizontally">
+                                <div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb"
+                                            style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                                            <h4>State Wise Beneficeary Details Master</h4>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        
+                            <form [formGroup]="formValidate">
+                                <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+                                    <!-- <span class="detailType">Details of CFC</span> -->
+                                    <div class="container" style="font-size: 12px;">
+                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select state</mat-label>
+                                                        <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="Getdistictmaster(statecd)">
+                                                            <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                                                item.state_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('state', 'required')">state is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>District</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select District</mat-label>
+                                                        <mat-select formControlName="district"  (selectionChange)="GetYearmaster()">
+                                                            <mat-option *ngFor="let item of selectUserType" [value]="item.district_code">{{
+                                                                item.district_name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('district', 'required')">district is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Year</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select year</mat-label>
+                                                        <mat-select formControlName="year"  [(ngModel)]="yearcd"    (selectionChange)="GetCategorymaster()" >
+                                                            <mat-option *ngFor="let item of Selectyeardata" [value]="item.financial_Year">{{
+                                                                item.financial_Year
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('year', 'required')">year is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select Category</mat-label>
+                                                        <mat-select formControlName="category" [(ngModel)]="categoryid"  (selectionChange)="GetSubcatergorymaster(categoryid)">
+                                                            <mat-option *ngFor="let item of Selectcategorydata" [value]="item.category_Id">{{
+                                                                item.category_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('category', 'required')">category is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sub Category</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select subcategory</mat-label>
+                                                        <mat-select formControlName="subcategory" [(ngModel)]="subcategoryid"  (selectionChange)="GetSubcategory2master(subcategoryid)">
+                                                            <mat-option *ngFor="let item of Selectsubcategorymaster" [value]="item.subCategory_Id">{{
+                                                                item.subCategory_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('subcategory', 'required')">subcategory is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sub category2</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select subcategory2</mat-label>
+                                                        <mat-select formControlName="subcategory2"  [(ngModel)]="subcatgoryid2" (selectionChange)="GetSubcatergorymaster3(subcatgoryid2)">
+                                                            <mat-option *ngFor="let item of Selectsubcategorymaster2" [value]="item.subCategory2_Id">{{
+                                                                item.subCategory2_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('subcategory2', 'required')">subcategory2 is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sub Category3</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select subcategory3</mat-label>
+                                                        <mat-select formControlName="subcategory3"  [(ngModel)]="subcategoryid3"  (selectionChange)="getcomponentmaster(subcategoryid3)">
+                                                            <mat-option *ngFor="let item of selectsubcategorymaster3" [value]="item.subCategory3_Id">{{
+                                                                item.subCategory3_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('subcategory3', 'required')">subcategory3 is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Component</label>
+                                                <div>
+                                                    <mat-form-field>
+                                                        <mat-label>Select component</mat-label>
+                                                        <mat-select formControlName="component" (selectionChange)="GetBeneficearydetails()" >
+                                                            <mat-option *ngFor="let item of selectcomponent" [value]="item.mainComponent_Id">{{
+                                                                item.component_Name
+                                                                }}</mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="hasError('component', 'required')">state is
+                                                            <strong>required</strong></mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Name Of Beneficeary</label>
+                                                <div>
+                                                    <mat-form-field >
+                                                        <input matInput type="text" placeholder="Enter Name Of Beneficeary" formControlName="beneficeary" [(ngModel)]="addbeneficearydetails.Beneficiary"  >
+                                                        <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Mobile No Of Beneficeary </label>
+                                                <div>
+                                                    <mat-form-field >
+                                                        <input matInput type="text" placeholder="Enter district_name_ll" formControlName="mobileno" [(ngModel)]="addbeneficearydetails.Mobile"  >
+                                                        <mat-error *ngIf="hasError('mobileno', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('mobileno', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('mobileno', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Aadhar No Of Beneficeary</label>
+                                                <div>
+                                                    <mat-form-field >
+                                                        <input matInput type="text" placeholder="Enter district_name_ll" formControlName="aadharno" [(ngModel)]="addbeneficearydetails.AadharNo"  >
+                                                        <mat-error *ngIf="hasError('aadharno', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('aadharno', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('aadharno', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Amount Of Subsidy</label>
+                                                <div>
+                                                    <mat-form-field >
+                                                        <input matInput type="text" placeholder="Enter district_name_ll" formControlName="subsidy" [(ngModel)]="addbeneficearydetails.AmountSubsidy"  >
+                                                        <mat-error *ngIf="hasError('subsidy', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('subsidy', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('subsidy', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Remarks</label>
+                                                <div>
+                                                    <mat-form-field >
+                                                        <input matInput type="text" placeholder="Enter district_name_ll" formControlName="remarks" [(ngModel)]="addbeneficearydetails.Remarks"  >
+                                                        <mat-error *ngIf="hasError('remarks', 'required')">Local language name is <strong>required</strong></mat-error>
+                                                        <mat-error *ngIf="hasError('remarks', 'maxlength')">You have more than 100 characters</mat-error>
+                                                        <mat-error *ngIf="hasError('remarks', 'pattern')">Only characters are allowed</mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btnDiv">
+                                        <button class="btn" (click)="poststatebeneficearydata()">Save</button>
+                                        <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                                    </div>
+                                </div>
+                              </form>
+                        </div>
+                  
+
+                        
+                <table mat-table matSort [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="slNo">
+                        <th mat-header-cell *matHeaderCellDef> Sl No. </th>
+                        <td mat-cell *matCellDef="let row let i = index;"> {{i+1}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="State">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                        <td mat-cell *matCellDef="let row"> {{row.stateCode}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="District">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+                        <td mat-cell *matCellDef="let row">
+                            <!-- {{row.districtName}}  -->
+                            <span *ngIf="!row.editable">{{row.districtName}}</span>
+                            <input type="text" [(ngModel)]="row.districtName" *ngIf="row.editable">
+                        </td>
+                    </ng-container>
+
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                        <td mat-cell *matCellDef="let row">
+
+                            <button type="button" *ngIf="!row.isEditing" class="btn btn-colour" 
+                            (click)="Editdistrictmaster(row)">Edit</button>
+    
+                        <button type="button" class="btn btn-colour"
+                            (click)="Updatedistrictmasterdata(row)" *ngIf="row.isEditing">Update</button>
+    
+                        <button type="button" class="btn" mat-stroked-button style="margin-left: 4px;"
+                            (click)="cancelEdit(row)" *ngIf="row.isEditing">Cancel</button>
+    
+                         <button type="button" class="btn" mat-raised-button color="warn" style="margin-left: 4px;"
+                            (click)="Deletedistrictmaster(row)" *ngIf="!row.isEditing">Delete</button>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <!-- <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr> -->
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                  
+
+

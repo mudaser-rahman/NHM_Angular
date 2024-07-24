@@ -1,0 +1,405 @@
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;">
+                    <h4>SUCESS STORIES </h4>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="Getdistictmaster(statecd)">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                        item.state_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">state is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>District</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select District</mat-label>
+                                <mat-select formControlName="district"   [(ngModel)]="distcd"  (selectionChange)="GetMandalmaster(statecd, distcd)">
+                                    <mat-option *ngFor="let item of selectdistrictdata" [value]="item.lG_DISTRICTCODE">{{
+                                        item.districtname
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">district is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label> Block</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select Block</mat-label>
+                                <mat-select formControlName="mandal"   [(ngModel)]="mandalcd"   (selectionChange)="GetVillagemaster()">
+                                    <mat-option *ngFor="let item of selectmandalmaster" [value]="item.lG_BLOCKCODE">{{
+                                        item.blockname
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('mandal', 'required')">mandal is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+                    
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label> Village</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select village</mat-label>
+                                <mat-select formControlName="village" [(ngModel)]="villagecd"  (selectionChange)="GetYearmaster()">
+                                    <mat-option *ngFor="let item of SelectVillagemaster" [value]="item.lG_VILLAGECODE">{{
+                                        item.villagename
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('village', 'required')">village is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            
+
+            <div class="container">
+                <h3>Farmer Details</h3>
+                <div class="row">
+                    
+           
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Farmer Name</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter Name of farmer" formControlName="beneficeary" [(ngModel)]="addsucessstories.FarmerName"  >
+                                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Farmer's Father Name</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter Farmer Father Name" formControlName="beneficeary" [(ngModel)]="addsucessstories.FatherName"  >
+                                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label> Contact No </label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter mobile" formControlName="mobileno" [(ngModel)]="addsucessstories.Contact"  >
+                                    <mat-error *ngIf="hasError('mobileno', 'required')">Local language name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('mobileno', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('mobileno', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label> Crop name</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter Crop Name" formControlName="cropname" [(ngModel)]="addsucessstories.Crop"  >
+                                    <mat-error *ngIf="hasError('cropname', 'required')"> crop name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('cropname', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('cropname', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Technology Adopted</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter technology" formControlName="technology" [(ngModel)]="addsucessstories.Technology"  >
+                                    <mat-error *ngIf="hasError('technology', 'required')">Technology  name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('technology', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('technology', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Farmer's Photo </label>
+                            <div>
+                                <input type="file" (change)="onFileselected($event)">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Land's Photo </label>
+                            <div>
+    
+                                <input type="file" (change)="onFileselected2($event)">
+                   
+                            </div>
+                        </div>
+                    </div>
+
+
+    
+                </div>
+            </div>
+           
+
+<div class="container">
+
+    <h3>Cultivation Details Details</h3>
+<div class="row">
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Total Cost of
+                Cultivation :</label>
+            <div>
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Normal Pratice(Rs./Ha) " formControlName="costofcultivation" [(ngModel)]="addsucessstories.TotalCostByNormal"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Adopting  Technology (Rs./Ha)" formControlName="costofcultivation" [(ngModel)]="addsucessstories.TotalCostByAdopting"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Yield in Tonnes  :</label>
+            <div>
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Normal Pratice(Rs./Ha)" formControlName="yield" [(ngModel)]="addsucessstories.YieldByNormal"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Adopting  Technology (Rs./Ha)" formControlName="yield" [(ngModel)]="addsucessstories.YieldByAdopting"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Net Income (Rs.) :</label>
+            <div>
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Normal Pratice (Rs./Ha)" formControlName="NetIncome" [(ngModel)]="addsucessstories.NetIncomeByNormal"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Adopting  Technology (Rs./Ha)" formControlName="NetIncome" [(ngModel)]="addsucessstories.NetIncomeByAdopting"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Cost / Ton (Rs.) :</label>
+            <div>
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Normal Pratice  (Rs./Ha)" formControlName="costofton" [(ngModel)]="addsucessstories.CostTonByNormal"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Adopting  Technology (Rs./Ha)" formControlName="costofton" [(ngModel)]="addsucessstories.CostTonByAdopting"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Methodology for
+                Marketing of Produce :</label>
+            <div>
+                <mat-form-field >
+                    <input matInput type="text" placeholder="By Normal Pratice (Rs./Ha) "formControlName="methodology" [(ngModel)]="addsucessstories.MethodologyByNormal"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="text" placeholder="by Adopting  Technology (Rs./Ha)" formControlName="methodology" [(ngModel)]="addsucessstories.MethodologyByAdopting"  >
+                    <mat-error *ngIf="hasError('beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                    <mat-error *ngIf="hasError('beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+             
+        
+                
+            </div>
+            <div class="btnDiv">
+                <button class="btn" (click)="postSucessStoriesdata()">Save</button>
+                <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+            </div>
+
+
+
+
+<table mat-table matSort [dataSource]="dataSource">
+
+<ng-container matColumnDef="slNo">
+<th mat-header-cell *matHeaderCellDef> Sl No. </th>
+<td mat-cell *matCellDef="let row let i = index;"> {{i+1}} </td>
+</ng-container>
+
+<ng-container matColumnDef="Years">
+<th mat-header-cell *matHeaderCellDef mat-sort-header> Years </th>
+<td mat-cell *matCellDef="let row"> {{row.years}} </td>
+</ng-container>
+
+<ng-container matColumnDef="State">
+<th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+<td mat-cell *matCellDef="let row">
+    <!-- {{row.districtName}}  -->
+    <span *ngIf="!row.editable">{{row.state_Name}}</span>
+    <input type="text" [(ngModel)]="row.state_Name" *ngIf="row.editable">
+</td>
+</ng-container>
+
+<ng-container matColumnDef="noOfBeneficiary">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No of Beneficeary </th>
+    <td mat-cell *matCellDef="let row">
+        <!-- {{row.districtName}}  -->
+        <span *ngIf="!row.editable">{{row.noOfBeneficiary}}</span>
+        <input type="text" [(ngModel)]="row.noOfBeneficiary" *ngIf="row.editable">
+    </td>
+    </ng-container>
+
+<!-- Action Column -->
+<ng-container matColumnDef="Action">
+<th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+<td mat-cell *matCellDef="let row">
+
+    <button type="button" *ngIf="!row.isEditing" class="btn btn-colour" 
+    (click)="Editdistrictmaster(row)">Edit</button>
+
+<button type="button" class="btn btn-colour"
+    (click)="Updatedistrictmasterdata(row)" *ngIf="row.isEditing">Update</button>
+
+<button type="button" class="btn" mat-stroked-button style="margin-left: 4px;"
+    (click)="cancelEdit(row)" *ngIf="row.isEditing">Cancel</button>
+
+ <button type="button" class="btn" mat-raised-button color="warn" style="margin-left: 4px;"
+    (click)="Deletedistrictmaster(row)" *ngIf="!row.isEditing">Delete</button>
+
+</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+<!-- Row shown when there is no matching data. -->
+<!-- <tr class="mat-row" *matNoDataRow>
+<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+</tr> -->
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+
+

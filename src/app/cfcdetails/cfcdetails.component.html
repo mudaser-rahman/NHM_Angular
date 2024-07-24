@@ -1,0 +1,210 @@
+<div>
+    <div class="center-horizontally">
+        <div>
+            <h2>
+                CFC Details
+            </h2>
+        </div>
+    </div>
+
+    <form [formGroup]="cfcDetailValidateForm">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <span class="detailType">Details of CFC</span>
+            <div class="container" style="font-size: 12px;">
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Name Of CFC</label>
+                        <div>
+                            <mat-form-field appearance="outline" style="height: 40px;">
+                                <mat-select formControlName="nameOfCFC" placeholder="Select CFC"
+                                    [(ngModel)]="cfcDetails.cfcCode">
+                                    <mat-option *ngFor="let item of cfcMasterArr" [value]="item.cfcCode">
+                                        {{item.cfcName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('nameOfCFC', 'required')">CFC is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="state" placeholder="Select State"
+                                    [(ngModel)]="cfcDetails.stateCode">
+                                    <mat-option *ngFor="let item of stateArr" [value]="item.stateCode">
+                                        {{item.stateName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">State is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>District</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="district" placeholder="Select District"
+                                    [(ngModel)]="cfcDetails.districtCode">
+                                    <mat-option *ngFor="let item of districtArr" [value]="item.districtCode">
+                                        {{item.districtName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">District is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Block</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="block" placeholder="Select Block"
+                                    [(ngModel)]="cfcDetails.blockCode">
+                                    <mat-option *ngFor="let item of blockArr" [value]="item.blockCode">
+                                        {{item.blockName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('block', 'required')">Block is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Panchayat</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="panchayat" placeholder="Select Panchayat"
+                                    [(ngModel)]="cfcDetails.panchayatCode">
+                                    <mat-option *ngFor="let item of panchayatArr" [value]="item.panchayatCode">
+                                        {{item.panchayatName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('panchayat', 'required')">Panchayat is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Tahsil</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="tahsil" placeholder="Select Tahsil"
+                                    [(ngModel)]="cfcDetails.tahsilCode">
+                                    <mat-option *ngFor="let item of tahsilArr" [value]="item.tahsilCode">
+                                        {{item.tahsilName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('tahsil', 'required')">Tahsil is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Village</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="village" placeholder="Select Village"
+                                    [(ngModel)]="cfcDetails.villageCode">
+                                    <mat-option *ngFor="let item of villageArr" [value]="item.villageCode">
+                                        {{item.villageName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('village', 'required')">Village is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="form-group">
+                        <label>Agri. Office</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="agriOfficer" placeholder="Select Agri. Office"
+                                    [(ngModel)]="cfcDetails.agriCode">
+                                    <mat-option *ngFor="let item of agreOfficeArr" [value]="item.agriCode">
+                                        {{item.agriOfficeName}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('agriOfficer', 'required')">Agri. Office is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" placeholder="Enter Mobile No" formControlName="mobileNo"
+                                    [(ngModel)]="cfcDetails.mobileNo" required>
+                                <mat-error *ngIf="hasError('mobileNo', 'required')">Mobile number is
+                                    <strong>required</strong></mat-error>
+                                <mat-error *ngIf="hasError('mobileNo', 'maxlength')">You have more than 10
+                                    digit</mat-error>
+                                <mat-error *ngIf="hasError('mobileNo', 'pattern')">Only numbers are
+                                    alloweded</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" placeholder="Enter Email" formControlName="emailId"
+                                    [(ngModel)]="cfcDetails.emailId" required>
+                                <mat-error *ngIf="hasError('emailId', 'required')">Email is
+                                    <strong>required</strong></mat-error>
+                                <mat-error *ngIf="hasError('emailId', 'maxlength')">You have more than 75
+                                    characters</mat-error>
+                                <mat-error *ngIf="hasError('emailId', 'pattern')">Enter valid email</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="form-group">
+                        <label>CFC ID</label>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <input matInput type="text" placeholder="Enter CFC ID" formControlName="cfcId"
+                                    [(ngModel)]="cfcDetails.cfcId">
+                                    <mat-hint>Optional</mat-hint>
+                                <mat-error *ngIf="hasError('cfcId', 'required')">CFC ID is
+                                    <strong>required</strong></mat-error>
+                                <mat-error *ngIf="hasError('cfcId', 'maxlength')">You have more than 10
+                                    characters</mat-error>
+                                <mat-error *ngIf="hasError('cfcId', 'pattern')">Only numbers are allowed</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btnDiv">
+                <button class="btn" (click)="cancel()">Cancel</button>
+                <button class="btn" (click)="reset()">Reset</button>
+                <button class="btn" (click)="saveAndExit(0)">Save</button>
+                <button class="btn" (click)="saveAndExit(1)">Save/Exit</button>
+            </div>
+        </div>
+    </form>
+</div>

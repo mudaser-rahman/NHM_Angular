@@ -1,0 +1,220 @@
+<p>districtleveldata-entry works!</p>
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;  ">
+                    <h4>State  Level Data Entry </h4>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <div class="container" style="font-size: 12px;">
+
+        
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select year</mat-label>
+                                <mat-select formControlName="year"  [(ngModel)]="yearcd"    (selectionChange)="getMonthwisedata()" >
+                                    <mat-option *ngFor="let item of Selectyeardata" [value]="item.financial_Year">{{
+                                        item.financial_Year
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('year', 'required')">year is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>From Month</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select FromMonth</mat-label>
+                                <mat-select formControlName="month"  [(ngModel)]="Frommonthcd"    (selectionChange)="gettommonthdata()" >
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.sno">{{
+                                        item.month_Name
+
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('month', 'required')">month is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>To Month</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select ToMonth</mat-label>
+                                <mat-select formControlName="month2"  [(ngModel)]="Tomonthcd" >
+                                    <mat-option *ngFor="let item of selecttomonthdata" [value]="item.sno">{{
+                                        item.month_Name
+
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('month2', 'required')">month is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+
+     
+                <div class="btnDiv">
+                    <button class="btn btn-success" (click)="GetDistrictleveldatastatus()"> Show </button>
+                    <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+<div class="col-lg-12"  style="overflow: scroll;">
+
+    <table class="  table-bordered table table-striped" style="overflow: scroll;">
+        <thead>
+        <tr>
+            <th scope="col">SNo </th>
+
+        <th scope="col">state Name </th>
+        <th scope="col">Total Reporting</th>
+        
+        
+        <th scope="col">APR </th>
+        <th scope="col">MAY </th>
+        <th scope="col"> JUN </th>
+        <th scope="col">
+           JUL</th>
+        <th scope="col">AUG </th>
+        <th scope="col">SEPT</th>
+        <th scope="col">OCT</th>
+        <th scope="col">NOV</th>
+        <th scope="col">DEC </th>
+        <th scope="col">JAN </th>
+
+        <th scope="col">FEB </th>
+
+        <th scope="col">MAR </th>
+
+         </tr>
+        </thead>
+        <tbody class="tbody">
+       
+                        <tr *ngFor="let item of data">
+
+                            <td>{{ item['S.No.'] }}</td>
+
+                 
+                            
+                                <td>{{ item['State Name'] }}
+
+                                </td>
+                                <td>{{ item['Total District'] }}</td>
+                            
+
+                                <td>{{ item['Apr'] }}</td>
+
+                            
+                                           
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['May']}}</span>
+                                                    </td>
+                                                
+                                             
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Jun']}}</span>
+                                                    </td>
+                                                
+                                              
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Jul']}}</span>
+                                                    </td>
+                                                
+                                              
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Aug']}}</span>
+                                                    </td>
+                                                
+                                               
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Sep']}}</span>
+                                                    </td>
+                                                
+                                            
+                                                    
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Oct']}}</span>
+                                                    </td>
+                                                
+                                                
+
+                                                    <td>
+                                                        <span *ngIf="!item.editable">{{item['Nov']}}</span>
+                                                        </td>
+                                                    
+                                                        <td>
+                                                            <span *ngIf="!item.editable">{{item['Dec']}}</span>
+                                                            </td>
+
+                                                            
+                                        <td>
+                                            <span *ngIf="!item.editable">{{item['Jan']}}</span>
+                                            </td>
+                                        
+                                        
+
+
+                                            <td>
+                                                <span *ngIf="!item.editable">{{item['Feb']}}</span>
+                                                <!-- <input type="text" [(ngModel)]="item.june" *ngIf="item.editable"> -->
+                                                </td>
+                                            
+                                            
+                                                <td>
+                                                    <span *ngIf="!item.editable">{{item['Mar']}}</span>
+                                                    </td>
+                                                
+                                             
+                                                        
+                                    
+
+<!--         
+                            <td>
+                                <button type="button" class="btn btn-success"
+                                style="width: 100px;" (click)="Updatemandalmaster(item)"  >Update</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger"  (click)="DeleteMandalmaster(item)"
+                                    style="width: 100px;">Delete</button>
+
+                            </td> -->
+                        </tr>
+        </tbody>
+        </table>
+
+        </div>

@@ -1,0 +1,317 @@
+<div class="col-md-12"></div>
+<div>
+    <div class="center-horizontally">
+        <div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"
+                    style="background-color: rgba(3, 24, 49, 0.692); text-align: center; color: white; font-size: large; box-shadow: 2px 2px 2px gray; justify-content: center; margin-top: 11px; font-size: 25px bold;">
+                    <h4> Project Based Details :
+                    </h4>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <form [formGroup]="formValidate">
+        <div style="margin-top: 10px; height: 100%;" class="scrollable-content">
+            <!-- <span class="detailType">Details of CFC</span> -->
+            <div class="container" style="font-size: 12px;">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>State</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select state</mat-label>
+                                <mat-select formControlName="state"  [(ngModel)]="statecd"   (selectionChange)="Getdistictmaster(statecd)">
+                                    <mat-option *ngFor="let item of selectUserType" [value]="item.lg_State_Code">{{
+                                        item.state_Name
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('state', 'required')">state is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>District</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Select District</mat-label>
+                                <mat-select formControlName="district"   [(ngModel)]="distcd"  (selectionChange)="GetProjectcategory()">
+                                    <mat-option *ngFor="let item of selectdistrictdata" [value]="item.lG_DISTRICTCODE">{{
+                                        item.districtname
+                                        }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hasError('district', 'required')">district is
+                                    <strong>required</strong></mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+
+              
+
+               
+
+
+            </div>
+            
+
+            <div class="container">
+             
+                <div class="row">
+                    
+           
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Project Code Name</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter  Project Code" formControlName="projectcode" [(ngModel)]="addprojectdetails.PCode"  >
+                                    <mat-error *ngIf="hasError('projectcode', 'required')">Local language name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('projectcode', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('projectcode', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Sancation Date </label>
+                            <div>
+                       
+
+                                <mat-form-field>
+                                    <mat-label>SancationDate</mat-label>
+                                    <input matInput [matDatepicker]="picker" formControlName="sanctiondate" [(ngModel)]="addprojectdetails.Date_Sanction" >
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+
+                                    <mat-error *ngIf="hasError('sanctiondate', 'required')">sanction date  is <strong>required</strong></mat-error>
+                                  </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Project Category</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select Category</mat-label>
+                                    <mat-select formControlName="category"   [(ngModel)]="categoryid"  (selectionChange)="GetProjectsubcategory()">
+                                        <mat-option *ngFor="let item of selectpcatgorymaster" [value]="item.category_Id">{{
+                                            item.category_Name
+                                            }}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="hasError('category', 'required')">category is
+                                        <strong>required</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Project subcategory</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select SubCatgeory</mat-label>
+                                    <mat-select formControlName="subcategory"   [(ngModel)]="subcategoryid"  (selectionChange)="GetUnits()">
+                                        <mat-option *ngFor="let item of SelectPsubcatgorydata" [value]="item.subCategory_Id">{{
+                                            item.subCategory_Name
+                                            }}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="hasError('subcategory', 'required')">subcategory is
+                                        <strong>required</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label> Beneficery Name  </label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter Beneficeary" formControlName="Beneficeary" [(ngModel)]="addprojectdetails.Beneficiary"  >
+                                    <mat-error *ngIf="hasError('Beneficeary', 'required')">Local language name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('Beneficeary', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('Beneficeary', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label> Address </label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter Address " formControlName="Address" [(ngModel)]="addprojectdetails.Address"  >
+                                    <mat-error *ngIf="hasError('Address', 'required')"> Address is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('Address', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('Address', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Project Cost (In Lakhs)</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter project_Cost" formControlName="projectcost" [(ngModel)]="addprojectdetails.Project_Cost"  >
+                                    <mat-error *ngIf="hasError('projectcost', 'required')">Technology  name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('projectcost', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('projectcost', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Subsidy</label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="subsidy amount" formControlName="subsidy" [(ngModel)]="addprojectdetails.Subsidy"  >
+                                    <mat-error *ngIf="hasError('subsidy', 'required')">Technology  name is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('subsidy', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('subsidy', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Capacity </label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter capacity" formControlName="capacity" [(ngModel)]="addprojectdetails.Capacity"  >
+                                    <mat-error *ngIf="hasError('capacity', 'required')">capacity   is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('capacity', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('capacity', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Units</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select Unit</mat-label>
+                                    <mat-select formControlName="Units"   [(ngModel)]="unitscd"  (selectionChange)="GetStatus()">
+                                        <mat-option *ngFor="let item of SelectUnitsdata" [value]="item.sno">{{
+                                            item.unitName
+                                            }}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="hasError('Units', 'required')">Units is
+                                        <strong>required</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>status</label>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Select status</mat-label>
+                                    <mat-select formControlName="Status"   [(ngModel)]="statuscd">
+                                        <mat-option *ngFor="let item of Selectstatusdata" [value]="item.sNo">{{
+                                            item.status
+                                            }}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="hasError('Status', 'required')">Status is
+                                        <strong>required</strong></mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Upload Geo-tagged Photographs </label>
+                            <div>
+                                <input type="file" (change)="onFileselected($event)">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Land's Photo </label>
+                            <div>
+    
+                                <input type="file" (change)="onFileselected2($event)">
+                   
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                     
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Remarks </label>
+                            <div>
+                                <mat-form-field >
+                                    <input matInput type="text" placeholder="Enter remarks" formControlName="remarks" [(ngModel)]="addprojectdetails.Remarks"  >
+                                    <mat-error *ngIf="hasError('remarks', 'required')">remarks   is <strong>required</strong></mat-error>
+                                    <mat-error *ngIf="hasError('remarks', 'maxlength')">You have more than 100 characters</mat-error>
+                                    <mat-error *ngIf="hasError('remarks', 'pattern')">Only characters are allowed</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+    
+                </div>
+            </div>
+           
+
+
+
+
+
+              
+            </div>
+            <div class="btnDiv">
+                <button class="btn" (click)="PostProjectentrydetails()">Save</button>
+                <!-- <button class="btn" (click)="cancel()">Cancel</button> -->
+            </div>
+
+
+
+
+
+

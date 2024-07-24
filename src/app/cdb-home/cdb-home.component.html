@@ -1,0 +1,112 @@
+<div >
+    <div>
+      <img src="/src/assets/Images/NHM_header.PNG" class="img-fluid" alt="">
+    </div>
+  
+  </div>
+  
+  <div style="height: 100%;">
+    <mat-toolbar class="matToolBar" >
+      <mat-toolbar-row >
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container style="height: 100%;">
+  
+      <mat-sidenav mode="side" #start mode="side" [opened]="true" class="sidenavcolour">
+        <mat-nav-list>
+          <mat-accordion>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Scheme
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul type="none">
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-1st year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-2nd year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">Baseline Summary</a></li>
+                <li><a mat-list-item routerLink="/basic-details">LoDP</a></li>
+              </ul>
+            </mat-expansion-panel>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Acknowledgement
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul type="none">
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-1st year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-2nd year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">Baseline Summary</a></li>
+                <li><a mat-list-item routerLink="/basic-details">LoDP</a></li>
+              </ul>
+            </mat-expansion-panel>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Status of Applicant
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul type="none">
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-1st year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-2nd year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">Baseline Summary</a></li>
+                <li><a mat-list-item routerLink="/basic-details">LoDP</a></li>
+              </ul>
+            </mat-expansion-panel>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  MIS Report
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul type="none">
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-1st year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">AEC-2nd year</a></li>
+                <li><a mat-list-item routerLink="/cedae-two-year">Baseline Summary</a></li>
+                <li><a mat-list-item routerLink="/basic-details">LoDP</a></li>
+              </ul>
+            </mat-expansion-panel>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  CFC Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul type="none">
+                <li><a mat-list-item routerLink="/cfc-master">CFC Master</a></li>
+                <li><a mat-list-item routerLink="/cfc-details">CFC Details</a></li>
+                <li><a mat-list-item routerLink="/cfc-president-details">CFC President Details</a></li>
+                <li><a mat-list-item routerLink="/cfc-secretraty-details">CFC Secretraty Details</a></li>
+                <li><a mat-list-item routerLink="/cfc-members-details">CFC Members Details</a></li>
+                <li><a mat-list-item routerLink="/cfc-report">CFC Report</a></li>
+              </ul>
+            </mat-expansion-panel>
+  
+  
+            
+          </mat-accordion>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  
+    <!-- <footer>
+  
+      <div style="text-align: center;">
+        <img src="assets/Images\Hortnet_footer_with_agri copy1.jpg" class="img-fluidd" alt=""> 
+      </div>
+  
+    </footer> -->
+    
+  </div>
+  
+  
+  
